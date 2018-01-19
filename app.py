@@ -25,8 +25,8 @@ while True:
     w,h = image.shape[1], image.shape[0]
     small = imresize(image, (h/SCALE,w/SCALE))
     if ret:
-        locations = fr.face_locations(small)
-        encodings = fr.face_encodings(small)
+        locations = fr.face_locations(small, model='cnn')
+        encodings = fr.face_encodings(small, locations)
         for i in range(len(locations)):
             enc = encodings[i]
             loc = locations[i]
