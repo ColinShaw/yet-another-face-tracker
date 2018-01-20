@@ -26,14 +26,14 @@ class Label(object):
 
     def header(self, label):
         cv2.rectangle(
-            image,
+            self.__image,
             (self.__loc[1]+1,self.__loc[0]-20),
             (self.__loc[3]-1,self.__loc[0]),
             (0,255,0),
             cv2.FILLED
         )
         cv2.putText(
-            image,
+            self.__image,
             label,
             (self.__loc[3]+2,self.__loc[0]-2),
             cv2.FONT_HERSHEY_SIMPLEX,
