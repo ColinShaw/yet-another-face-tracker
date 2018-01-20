@@ -44,8 +44,8 @@ while True:
                 )
                 cv2.rectangle(
                     image,
-                    (loc[1]*SCALE,loc[0]*SCALE-20),
-                    (loc[3]*SCALE,loc[0]*SCALE),
+                    (loc[1]*SCALE+1,loc[0]*SCALE-20),
+                    (loc[3]*SCALE-1,loc[0]*SCALE),
                     (0,255,0),
                     cv2.FILLED
                 )
