@@ -14,3 +14,6 @@ class Detect(object):
         encs = fr.face_encodings(image, locs)
         return locs, encs
 
+    def compare(self, refs, encs):
+        return fr.compare_faces(refs, encs)
+
