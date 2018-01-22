@@ -14,10 +14,10 @@ if len(argv) < 2:
 else:
     config  = Config().get()
     capture = Capture(config)
+    trans   = Transform(config)
     display = Display()
     detect  = Detect()
     label   = Label()
-    trans   = Transform(config)
 
     with capture, display:
         key = ''
@@ -35,7 +35,7 @@ else:
                 image = label.outline().header(argv[1]).get_image()
             display.show(image)
             key = display.key()
-            if key == ' ' and success == True:
+            if key == 'c' and success == True:
                 print('Capturing {}...'.format(argv[1]))
                 Save().image(disk, argv[1])
 

@@ -9,11 +9,11 @@ from src.transform import Transform
 
 config  = Config().get()
 capture = Capture(config)
-detect  = Detect()
 encode  = Encode(config)
 kisi    = Kisi(config)
 repeat  = Repeat(config)
 trans   = Transform(config)
+detect  = Detect()
 
 refs, ref_map = encode.images()
 
@@ -28,7 +28,7 @@ with capture:
             for i in range(len(cmps)):
                 if cmps[i]:
                     lbl = ref_map[i]
-            if repeat.test(lbl):
+            if lbl != False and repeat.test(lbl):
                 kisi.unlock()
                 print('Detected {}'.format(lbl))
         else:

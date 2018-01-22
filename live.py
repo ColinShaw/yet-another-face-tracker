@@ -9,11 +9,11 @@ from src.transform import Transform
 
 config  = Config().get()
 capture = Capture(config)
+encode  = Encode(config)
+trans   = Transform(config)
 detect  = Detect()
 display = Display()
-encode  = Encode(config)
 label   = Label()
-trans   = Transform(config)
 
 refs, ref_map = encode.images()
 
