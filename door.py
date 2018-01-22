@@ -18,6 +18,7 @@ detect  = Detect()
 refs, ref_map = encode.images()
 
 with capture:
+    print('Detecting...')
     while True:
         image = capture.frame()
         small = trans.scale_image(image)

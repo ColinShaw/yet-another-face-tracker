@@ -14,24 +14,24 @@ class Kisi(object):
             'Accept':       'application/json',
             'Content-Type': 'application/json'
         }
-        payload = json.dumps({
+        payload = {
             'user': {
                 'email':    self.__email,
                 'password': self.__pwd
             }
-        })
+        }
         result = requests.post(
             'https://api.getkisi.com/users/sign_in',
             headers = headers, 
-            data    = payload
+            data    = json.dumps(payload)
         )
-        self.__secret = result.json()['secret']
+        return result.json()['secret']
 
-    def __unlock_door(self):
+    def __unlock_door(self, secret):
         headers = {
             'Accept':        'application/json',
             'Content-Type':  'application/json',
-            'X-Login-Secret': self.__secret
+            'X-Login-Secret': secret
         }
         requests.post(
             'https://api.getkisi.com/locks/{}/unlock'.format(self.__door),
@@ -40,10 +40,8 @@ class Kisi(object):
 
     def unlock(self):
         try:
-            self.__authenticate()
-            self.__unlock_door()
+            self.__unlock_door(self.__authenticate())
             print('  Door unlocked')
-        except ConnectionError:
-            print('  Connection error')
-        self.__secret = ''
+        except requests.ConnectionError:
+            print('  Kisi connection error')
 
