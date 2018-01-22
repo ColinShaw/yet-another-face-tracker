@@ -42,8 +42,8 @@ class Kisi(object):
         try:
             self.__authenticate()
             self.__unlock_door()
-            print('Door unlocked')
+            print('  Door unlocked')
         except ConnectionError:
-            print('Connection error')
+            print('  Connection error')
         self.__secret = ''
 
