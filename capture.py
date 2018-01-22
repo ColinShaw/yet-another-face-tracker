@@ -10,7 +10,9 @@ from sys           import argv
 if len(argv) < 2:
     print('You must specify a name argument.')
 else:
-    label, trans, detect = Label(), Transform(), Detect()
+    label = Label()
+    trans = Transform()
+    detect = Detect()
     with Display() as display, Capture() as capture:
         key = ''
         while key != 'q':
