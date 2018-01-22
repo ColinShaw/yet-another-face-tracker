@@ -1,4 +1,5 @@
 from src.capture   import Capture
+from src.config    import Config
 from src.detect    import Detect
 from src.display   import Display
 from src.encode    import Encode
@@ -6,14 +7,17 @@ from src.label     import Label
 from src.transform import Transform
 
 
+config = Config().get()
+capture = Capture(config)
 detect = Detect()
+display = Display()
 encode = Encode()
 label = Label()
 trans = Transform()
 
 refs, ref_map = encode.images()
 
-with Display() as display, Capture() as capture:
+with capture, display:
     while display.key() != 'q':
         image = capture.frame()
         label.set_image(image)

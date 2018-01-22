@@ -23,7 +23,7 @@ class Encode(object):
                 if len(encs) == 1:
                     refs.append(encs[0])
                     ref_map.append(dir_name)
-                    print('{}... detected'.format(file_name))
+                    print('{}... ACCEPTED'.format(file_name))
                 else:
                     print('{}... REMOVING'.format(file_name))
                     unlink('{}/{}'.format(b,image_name))

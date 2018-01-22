@@ -1,4 +1,5 @@
 from src.capture   import Capture
+from src.config    import Config
 from src.detect    import Detect
 from src.display   import Display
 from src.label     import Label
@@ -9,11 +10,16 @@ from sys           import argv
 
 if len(argv) < 2:
     print('You must specify a name argument.')
+
 else:
+    config = Config().get()
+    capture = Capture(config)
+    display = Display()
     detect = Detect()
     label = Label()
     trans = Transform()
-    with Display() as display, Capture() as capture:
+
+    with capture, display:
         key = ''
         while key != 'q':
             success = False
@@ -29,7 +35,7 @@ else:
                 image = label.outline().header(argv[1]).get_image()
             display.show(image)
             key = display.key()
-            if key == 'c' and success == True:
+            if key == ' ' and success == True:
                 print('Capturing {}...'.format(argv[1]))
                 Save().image(disk, argv[1])
 

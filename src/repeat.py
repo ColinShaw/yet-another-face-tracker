@@ -1,7 +1,7 @@
 class Repeat(object):
 
-    def __init__(self, times):
-        self.__times = times
+    def __init__(self, config):
+        self.__times = config['repeat_times']
         self.__last_value = ''
         self.__count = 0
 

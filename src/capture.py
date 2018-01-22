@@ -4,10 +4,10 @@ import cv2
 
 class Capture(object):
 
-    def __init__(self, width_max=400, height_max=300, device=0):
-        self.__width_max = width_max
-        self.__height_max = height_max
-        self.__camera = cv2.VideoCapture(device)
+    def __init__(self, config):
+        self.__width_max = config['preview_width']
+        self.__height_max = config['preview_height']
+        self.__camera = cv2.VideoCapture(config['video_device'])
 
     def __enter__(self):
         return self

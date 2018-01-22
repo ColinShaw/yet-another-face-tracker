@@ -1,4 +1,5 @@
 from src.capture   import Capture
+from src.config    import Config
 from src.detect    import Detect
 from src.encode    import Encode
 from src.kisi      import Kisi
@@ -6,15 +7,17 @@ from src.repeat    import Repeat
 from src.transform import Transform
 
 
+config = Config().get()
+capture = Capture(config)
 detect = Detect()
 encode = Encode()
 kisi = Kisi()
-repeat = Repeat(10)
+repeat = Repeat(config)
 trans = Transform()
 
 refs, ref_map = encode.images()
 
-with Capture() as capture:
+with capture:
     while True:
         image = capture.frame()
         small = trans.scale_image(image)
