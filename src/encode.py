@@ -1,6 +1,6 @@
 from scipy.misc import imread
 from os.path    import isdir
-from os         import listdir
+from os         import listdir, unlink
 import face_recognition as fr
 
 
@@ -25,6 +25,7 @@ class Encode(object):
                     ref_map.append(dir_name)
                     print('{}... detected'.format(file_name))
                 else:
-                    print('{}... not detected'.format(file_name))
+                    print('{}... REMOVING'.format(file_name))
+                    unlink('{}/{}'.format(b,image_name))
         return refs, ref_map 
 
