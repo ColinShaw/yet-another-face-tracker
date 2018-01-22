@@ -29,8 +29,8 @@ with capture:
                 if cmps[i]:
                     lbl = ref_map[i]
             if lbl != False and repeat.test(lbl):
-                kisi.unlock()
                 print('Detected {}'.format(lbl))
+                kisi.unlock()
         else:
             repeat.test('')
                 
