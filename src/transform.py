@@ -5,8 +5,8 @@ import cv2
 
 class Transform(object):
 
-    def __init__(self, scale=2):
-        self.__scale = scale
+    def __init__(self, config):
+        self.__scale = config['scale_factor']
 
     def scale_image(self, image):
         w,h = image.shape[0], image.shape[1]

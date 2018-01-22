@@ -7,13 +7,13 @@ from src.label     import Label
 from src.transform import Transform
 
 
-config = Config().get()
+config  = Config().get()
 capture = Capture(config)
-detect = Detect()
+detect  = Detect()
 display = Display()
-encode = Encode()
-label = Label()
-trans = Transform()
+encode  = Encode(config)
+label   = Label()
+trans   = Transform(config)
 
 refs, ref_map = encode.images()
 

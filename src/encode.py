@@ -6,8 +6,8 @@ import face_recognition as fr
 
 class Encode(object):
 
-    def __init__(self, base_dir='images'):
-        self.__base_dir = base_dir
+    def __init__(self, config):
+        self.__base_dir = config['image_directory']
        
     def images(self):
         refs, ref_map = [], []

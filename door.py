@@ -7,13 +7,13 @@ from src.repeat    import Repeat
 from src.transform import Transform
 
 
-config = Config().get()
+config  = Config().get()
 capture = Capture(config)
-detect = Detect()
-encode = Encode()
-kisi = Kisi()
-repeat = Repeat(config)
-trans = Transform()
+detect  = Detect()
+encode  = Encode(config)
+kisi    = Kisi(config)
+repeat  = Repeat(config)
+trans   = Transform(config)
 
 refs, ref_map = encode.images()
 

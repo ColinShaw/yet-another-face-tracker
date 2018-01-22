@@ -12,22 +12,22 @@ if len(argv) < 2:
     print('You must specify a name argument.')
 
 else:
-    config = Config().get()
+    config  = Config().get()
     capture = Capture(config)
     display = Display()
-    detect = Detect()
-    label = Label()
-    trans = Transform()
+    detect  = Detect()
+    label   = Label()
+    trans   = Transform(config)
 
     with capture, display:
         key = ''
         while key != 'q':
             success = False
             image = capture.frame()
-            disk = trans.image_copy(image)
-            disk = trans.image_color_flip(disk)
+            disk  = trans.image_copy(image)
+            disk  = trans.image_color_flip(disk)
             small = trans.scale_image(image)
-            locs = detect.locations(small)
+            locs  = detect.locations(small)
             if len(locs) == 1:
                 success = True
                 loc = trans.scale_location(locs[0])

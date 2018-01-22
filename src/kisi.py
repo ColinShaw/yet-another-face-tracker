@@ -1,6 +1,6 @@
 class Kisi(object):
 
-    def __init__(self):
+    def __init__(self, config):
         pass
 
     def unlock(self):
