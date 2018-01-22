@@ -1,18 +1,18 @@
 from src.capture   import Capture
-from src.display   import Display
-from src.transform import Transform
-from src.label     import Label
 from src.detect    import Detect
+from src.display   import Display
+from src.label     import Label
 from src.save      import Save
+from src.transform import Transform
 from sys           import argv
 
 
 if len(argv) < 2:
     print('You must specify a name argument.')
 else:
+    detect = Detect()
     label = Label()
     trans = Transform()
-    detect = Detect()
     with Display() as display, Capture() as capture:
         key = ''
         while key != 'q':

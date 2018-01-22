@@ -1,9 +1,9 @@
 from src.capture   import Capture
-from src.display   import Display
-from src.transform import Transform
-from src.label     import Label
 from src.detect    import Detect
+from src.display   import Display
 from src.encode    import Encode
+from src.label     import Label
+from src.transform import Transform
 
 
 detect = Detect()

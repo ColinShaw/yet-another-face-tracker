@@ -1,31 +1,33 @@
 from src.capture   import Capture
-from src.transform import Transform
 from src.detect    import Detect
 from src.encode    import Encode
-from src.repeat    import Repeat
 from src.kisi      import Kisi
+from src.repeat    import Repeat
+from src.transform import Transform
 
 
 detect = Detect()
 encode = Encode()
 kisi = Kisi()
-repeat = Repeat()
-transform = Transform()
+repeat = Repeat(10)
+trans = Transform()
 
 refs, ref_map = encode.images()
 
 with Capture() as capture:
-    image = capture.frame()
-    small = trans.scale_image(image)
-    _, encs = detect.all(small)
-    for i in range(len(encs)):
-        lbl = False
-        enc = encs[i]
-        cmps = detect.compare(refs, enc)
-        for j in range(len(cmps)):
-            if cmps[j]:
-                lbl = ref_map[j]
-        if lbl:
+    while True:
+        image = capture.frame()
+        small = trans.scale_image(image)
+        _, encs = detect.all(small)
+        if len(encs) == 1:
+            lbl = False
+            cmps = detect.compare(refs, encs[0])
+            for i in range(len(cmps)):
+                if cmps[i]:
+                    lbl = ref_map[i]
             if repeat.test(lbl):
                 kisi.unlock()
+                print('Detected {}'.format(lbl))
+        else:
+            repeat.test('')
                 
