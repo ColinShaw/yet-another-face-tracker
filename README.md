@@ -47,3 +47,19 @@ python door.py
 Obviously you need to have Kisi door locks to 
 use that.
 
+You will need to compy the example configuration,
+`config.yaml.example` to a real configuration,
+`config.yaml`.  If you are using Kisi door locks
+you will need to fill in credentials and which
+door to unlock.
+
+One thing to note about the implementation is the
+abstraction for image input.  The `Capture` class
+makes some assumptions about a class that is
+passed to the constructor having to do with being
+able to obtain images.  The sample here uses the
+`OpenCV` `VideoCapture` class for obtaining images
+from local capture devices.  This needs to be 
+changed to a different mechanism for obtaining
+images if you are wanting to use something like
+an IP camera.
