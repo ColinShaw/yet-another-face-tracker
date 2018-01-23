@@ -47,11 +47,12 @@ python door.py
 Obviously you need to have Kisi door locks to 
 use that.
 
-You will need to compy the example configuration,
+You will need to copy the example configuration,
 `config.yaml.example` to a real configuration,
 `config.yaml`.  If you are using Kisi door locks
 you will need to fill in credentials and which
-door to unlock.
+door to unlock.  The rest of the configurations
+shouldn't need messing with.
 
 One thing to note about the implementation is the
 abstraction for image input.  The `Capture` class
