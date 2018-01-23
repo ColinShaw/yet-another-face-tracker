@@ -1,14 +1,15 @@
-from src.capture   import Capture
-from src.config    import Config
-from src.detect    import Detect
-from src.encode    import Encode
-from src.kisi      import Kisi
-from src.repeat    import Repeat
-from src.transform import Transform
+from src.capture       import Capture
+from src.config        import Config
+from src.detect        import Detect
+from src.encode        import Encode
+from src.kisi          import Kisi
+from src.local_capture import LocalCapture
+from src.repeat        import Repeat
+from src.transform     import Transform
 
 
 config  = Config().get()
-capture = Capture(config)
+capture = Capture(LocalCapture(config), config)
 encode  = Encode(config)
 kisi    = Kisi(config)
 repeat  = Repeat(config)

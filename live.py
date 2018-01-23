@@ -1,14 +1,15 @@
-from src.capture   import Capture
-from src.config    import Config
-from src.detect    import Detect
-from src.display   import Display
-from src.encode    import Encode
-from src.label     import Label
-from src.transform import Transform
+from src.capture       import Capture
+from src.config        import Config
+from src.detect        import Detect
+from src.display       import Display
+from src.encode        import Encode
+from src.label         import Label
+from src.local_capture import LocalCapture
+from src.transform     import Transform
 
 
 config  = Config().get()
-capture = Capture(config)
+capture = Capture(LocalCapture(config), config)
 encode  = Encode(config)
 trans   = Transform(config)
 detect  = Detect()
