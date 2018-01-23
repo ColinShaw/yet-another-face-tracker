@@ -1,12 +1,12 @@
-from src.capture       import Capture
-from src.config        import Config
-from src.detect        import Detect
-from src.display       import Display
-from src.label         import Label
-from src.local_capture import LocalCapture
-from src.save          import Save
-from src.transform     import Transform
-from sys               import argv
+from src.capture      import Capture
+from src.config       import Config
+from src.detect       import Detect
+from src.display      import Display
+from src.label        import Label
+from src.local_camera import LocalCamera
+from src.save         import Save
+from src.transform    import Transform
+from sys              import argv
 
 
 if len(argv) < 2:
@@ -14,7 +14,7 @@ if len(argv) < 2:
 
 else:
     config  = Config().get()
-    capture = Capture(LocalCapture(config), config)
+    capture = Capture(LocalCamera(config), config)
     trans   = Transform(config)
     display = Display()
     detect  = Detect()

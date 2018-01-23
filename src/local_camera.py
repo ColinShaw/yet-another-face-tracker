@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 
 
-class LocalCapture(object):
+class LocalCamera(object):
 
     def __init__(self, config):
         self.__camera = cv2.VideoCapture(config['video_device'])
