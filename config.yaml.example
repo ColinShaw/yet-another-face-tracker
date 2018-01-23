@@ -1,0 +1,9 @@
+preview_width:   1024
+preview_height:  768
+video_device:    0
+image_directory: 'images'
+repeat_times:    10
+scale_factor:    4
+kisi_email:      '<email>'
+kisi_password:   '<pwd>'
+kisi_door_id:    <id>
