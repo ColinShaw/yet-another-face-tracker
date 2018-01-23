@@ -19,21 +19,25 @@ trans   = Transform(config)
 detect  = Detect()
 
 refs, ref_map = encode.images()
+print('\n')
 
 with capture:
-    while True:
-        image = capture.frame()
-        small = trans.scale_image(image)
-        _, encs = detect.all(small)
-        if len(encs) == 1:
-            lbl = False
-            cmps = detect.compare(refs, encs[0])
-            for i in range(len(cmps)):
-                if cmps[i]:
-                    lbl = ref_map[i]
-            if lbl != False and repeat.test(lbl):
-                print('[{}] Detected {}'.format(str(datetime.now()), lbl))
-                kisi.unlock()
-        else:
-            repeat.test('')
-                
+    try:
+        while True:
+            image = capture.frame()
+            small = trans.scale_image(image)
+            _, encs = detect.all(small)
+            if len(encs) == 1:
+                lbl = False
+                cmps = detect.compare(refs, encs[0])
+                for i in range(len(cmps)):
+                    if cmps[i]:
+                        lbl = ref_map[i]
+                if lbl != False and repeat.test(lbl):
+                    print('[{}] Detected {}'.format(str(datetime.now()), lbl))
+                    kisi.unlock()
+            else:
+                repeat.test('')
+    except KeyboardInterrupt:
+        pass
+

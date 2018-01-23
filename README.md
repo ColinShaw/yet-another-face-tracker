@@ -38,14 +38,22 @@ Kisi door locks.  This does not have a display,
 so you won't physically see who is in the frame.  In
 this application, if one and only one known face is
 identified for a number of consecutive frames, the
-door is unlocked.  Invoke it like this:
+door is unlocked.  Regardless of other logging that
+may or may not occur, you probably want to log what
+is being done.  This can be done like this:
 
 ```
-python door.py
+python door.py > log.txt 2>&1
 ```
 
 Obviously you need to have Kisi door locks to 
-use that.
+use this aspect.  Nothing fancy going on here with
+regard to stopping and starting this thing, it just
+runs in your terminal until you quit.  To get the
+desired automation around it you can just control
+the launch of the program.  You might have to the 
+the `KeyboardInterrupt` condition for quitting if 
+the situation warrants it.
 
 You will need to copy the example configuration,
 `config.yaml.example` to a real configuration,
