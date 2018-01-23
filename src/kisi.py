@@ -1,3 +1,4 @@
+from datetime import datetime
 import requests
 import json
 
@@ -41,7 +42,7 @@ class Kisi(object):
     def unlock(self):
         try:
             self.__unlock_door(self.__authenticate())
-            print('  Door unlocked')
+            print('[{}] --- Door unlocked'.format(str(datetime.now())))
         except requests.ConnectionError:
-            print('  Kisi connection error')
+            print('[{}] --- Kisi connection error'.format(str(datetime.now())))
 
