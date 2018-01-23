@@ -10,7 +10,8 @@ from datetime         import datetime
 
 
 config  = Config().get()
-capture = Capture(LocalCamera(config), config)
+camera  = LocalCamera(config)
+capture = Capture(config, camera)
 encode  = Encode(config)
 kisi    = Kisi(config)
 repeat  = Repeat(config)

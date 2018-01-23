@@ -9,17 +9,18 @@ from src.transform    import Transform
 from sys              import argv
 
 
+config  = Config().get()
+camera  = LocalCamera(config)
+capture = Capture(config, camera)
+trans   = Transform(config)
+display = Display()
+detect  = Detect()
+label   = Label()
+
 if len(argv) < 2:
     print('You must specify a name argument.')
 
 else:
-    config  = Config().get()
-    capture = Capture(LocalCamera(config), config)
-    trans   = Transform(config)
-    display = Display()
-    detect  = Detect()
-    label   = Label()
-
     with capture, display:
         key = ''
         while key != 'q':

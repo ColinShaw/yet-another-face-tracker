@@ -9,7 +9,8 @@ from src.transform    import Transform
 
 
 config  = Config().get()
-capture = Capture(LocalCamera(config), config)
+camera  = LocalCamera(config)
+capture = Capture(config, camera)
 encode  = Encode(config)
 trans   = Transform(config)
 detect  = Detect()
