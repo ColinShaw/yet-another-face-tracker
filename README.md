@@ -6,9 +6,11 @@ This is a face tracking system built around the
 add new people to a library of detectable people
 by providing an interactive live video feed from
 which screenshots can be taken with known 
-detections.  These are saved to a folder by
-the specified name of the individual.  Run this 
-in this way:
+detections, and then take actions based on these,
+for example marking live video and controlling
+door locks.  The detected faces are saved to a 
+directory specified by the name of the 
+individual.  Run this:
 
 ```
 python capture.py Colin
@@ -47,11 +49,11 @@ python door.py > log.txt 2>&1
 ```
 
 Obviously you need to have Kisi door locks to 
-use this aspect.  Nothing fancy going on here with
-regard to stopping and starting this thing, it just
+use this.  Nothing fancy going on here with
+regard to stopping and starting, it just
 runs in your terminal until you quit.  To get the
 desired automation around it you can just control
-the launch of the program.  You might have to the 
+the launch of the program.  You might have to change
 the `KeyboardInterrupt` condition for quitting if 
 the situation warrants it.
 
@@ -64,11 +66,10 @@ shouldn't need messing with.
 
 One thing to note about the implementation is the
 abstraction for image input.  The `Capture` class
-makes some assumptions about a class that is
-passed to the constructor having to do with being
-able to obtain images.  The sample here uses the
-`OpenCV` `VideoCapture` class for obtaining images
-from local capture devices.  This needs to be 
-changed to a different mechanism for obtaining
-images if you are wanting to use something like
-an IP camera.
+requires an object to fetch images.  One such class
+is the `LocalCamera` class that is an interface to
+the `OpenCV` `VideoCapture` interface for local 
+video devices.  You can easily add new functionality
+for things like IP cameras by simply implementing
+the image fetch in a new class.
+
