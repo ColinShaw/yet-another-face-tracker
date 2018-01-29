@@ -21,7 +21,7 @@ that contains images captured from the live
 video feed if you press the `c` key while there is
 an affirmative face identification.
 
-There is another utility, `live.py` that simply
+There is another utility, `preview.py` that simply
 reads all of the images from `/images/` and
 associates the images with the directory name as a
 label (e.g. the `Colin` directory).  It validates
@@ -32,7 +32,7 @@ video are compared against the known faces and
 labeled.  Invoke it like this:
 
 ```
-python live.py
+python preview.py
 ```
 
 The last utility, `door.py` is an interface with 
