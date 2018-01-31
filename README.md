@@ -1,7 +1,7 @@
 # Yet Another Face Tracker
 
 This is a face tracking system built around the
-`face_detection` library, which is built around
+`face_recognition` library, which is built around
 `dlib`.  The point of it is to be able to easily
 add new people to a library of detectable people
 by providing an interactive live video feed from
